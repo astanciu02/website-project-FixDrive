@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/customer-dashboard.css') }}">
+  <script src="{{ url_for('static', filename='scripts/customer-dashboard.js') }}" type="text/javascript"></script>
+</head>
+
+<body>
+  <a class="logout-btn" href="/logout">Logout</a>
+  <div class="container">
+    <div class="customer-section">
+      <h2>Dashboard</h2>
+      <p>Find Available Services in Your Area:</p>
+      <div class="search-bar">
+        <select id="service">
+          <option value="" disabled selected>Service</option>
+          <option value="Engine Repair">Engine Repair</option>
+          <option value="Brake Repair">Brake Repair</option>
+          <option value="Tire Replacement">Tire Replacement</option>
+          <option value="Transmission Service">Transmission Service</option>
+          <option value="Battery Replacement">Battery Replacement</option>
+          <option value="Cooling System Repair">Cooling System Repair</option>
+          <option value="Suspension Repair">Suspension Repair</option>
+          <option value="Exhaust System Repair">Exhaust System Repair</option>
+          <option value="Air Conditioning/Heating Repair">Air Conditioning/Heating Repair</option>
+          <option value="Fuel System Service">Fuel System Service</option>
+          <option value="Headlight/Taillight Restoration">Headlight/Taillight Restoration</option>
+          <option value="Windshield Replacement">Windshield Replacement</option>
+          <option value="Oil Change">Oil Change</option>
+          <option value="Wheel Alignment">Wheel Alignment</option>
+          <option value="Power Steering Repair">Power Steering Repair</option>
+        </select>
+        <select id="city">
+          <option value="" disabled selected>City</option>
+          <option value="Bucharest">Bucharest</option>
+          <option value="Iasi">Iasi</option>
+          <option value="Cluj">Cluj</option>
+          <option value="Constanta">Constanta</option>
+          <option value="Craiova">Craiova</option>
+          <option value="Brasov">Brasov</option>
+          <option value="Timisoara">Timisoara</option>
+        </select>
+        <button class="search-btn" id="search-btn">Search</button>
+      </div>
+      <h3>Your Appointments</h3>
+      <div class="appointment-section">
+        <ul class="appointment-list">
+          {% for appointment in appointments %}
+          <li class="appointment-item">
+            <h4>{{ appointment.service }}</h4>
+            <p>Date: {{ appointment.date }}, at {{ appointment.time }}</p>
+            <p>Vehicle: {{ appointment.vehicle }}</p>
+            <p>Address: {{ appointment.address }}</p>
+            <p>Mechanic Name: {{ appointment.mechanicName }}</p>
+            <p>Contact: {{ appointment.contact }}</p>
+            <p>Status: {{ appointment.status }}</p>
+            <p><button class="cancel-btn" appointmentID="{{ appointment._id }}" {% if appointment.status == "Completed" %} disabled style="opacity: 0.6; cursor: not-allowed;" {% endif %}>Cancel</button></p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

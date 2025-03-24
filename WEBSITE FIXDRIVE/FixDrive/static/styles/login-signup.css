@@ -1,0 +1,175 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../images/login.jpeg') no-repeat center center/cover; 
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.sl-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 40px;
+    text-align: center;
+    width: 300px;
+}
+
+/* Logo */
+.login-container img {
+    width: 80px;
+    margin-bottom: 20px;
+    border-radius: 50%; 
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+
+.login-container h2, .login-container h4 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.login-container h2 {
+    font-size: 1.8rem;
+}
+
+.login-container h4 {
+    font-size: 1.2rem;
+    font-weight: lighter;
+}
+
+
+.login-container input, 
+.signup-form input, 
+.signup-form select {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.login-container input::placeholder, 
+.signup-form input::placeholder {
+    color: #ccc;
+}
+
+
+.login-container .login-btn, 
+.signup-form .signup-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    color: #333;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-container .login-btn:hover, 
+.signup-form .signup-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+
+.footer-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.footer-text a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+/* Role Selection */
+.role-selection label {
+    margin-right: 15px;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 50%;
+    color: #fff;
+}
+
+.modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content .close:hover {
+    color: #fff;
+}

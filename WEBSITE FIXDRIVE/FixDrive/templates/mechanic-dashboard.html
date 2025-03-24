@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanic Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/mechanic-dashboard.css') }}">
+    <script src="{{ url_for('static', filename='scripts/mechanic-dashboard.js') }}" type="text/javascript"></script>
+</head>
+<body>
+<a class="logout-btn" href="/logout">Logout</a>
+    <div class="container">
+        <div class="mechanic-section">
+            <h2>Dashboard</h2>
+            <h3>Select Your Services</h3>
+            <form id="mechanicForm" onsubmit="updateServices(event)">
+        <div class="mechanic-checkboxes">
+            <label><input type="checkbox" name="service" value="Engine Repair"
+                          {% if 'Engine Repair' in services %} checked {% endif %}> Engine Repair</label>
+            <label><input type="checkbox" name="service" value="Brake Repair"
+                          {% if 'Brake Repair' in services %} checked {% endif %}> Brake Repair</label>
+            <label><input type="checkbox" name="service" value="Tire Replacement"
+                          {% if 'Tire Replacement' in services %} checked {% endif %}> Tire Replacement</label>
+            <label><input type="checkbox" name="service" value="Transmission Service"
+                          {% if 'Transmission Service' in services %} checked {% endif %}> Transmission Service</label>
+            <label><input type="checkbox" name="service" value="Battery Replacement"
+                          {% if 'Battery Replacement' in services %} checked {% endif %}> Battery Replacement</label>
+            <label><input type="checkbox" name="service" value="Cooling System Repair"
+                          {% if 'Cooling System Repair' in services %} checked {% endif %}> Cooling System Repair</label>
+            <label><input type="checkbox" name="service" value="Suspension Repair"
+                          {% if 'Suspension Repair' in services %} checked {% endif %}> Suspension Repair</label>
+            <label><input type="checkbox" name="service" value="Exhaust System Repair"
+                          {% if 'Exhaust System Repair' in services %} checked {% endif %}> Exhaust System Repair</label>
+            <label><input type="checkbox" name="service" value="AC Repair"
+                          {% if 'AC Repair' in services %} checked {% endif %}> Air Conditioning/Heating Repair</label>
+            <label><input type="checkbox" name="service" value="Fuel System Service"
+                          {% if 'Fuel System Service' in services %} checked {% endif %}> Fuel System Service</label>
+            <label><input type="checkbox" name="service" value="Headlight Restoration"
+                          {% if 'Headlight Restoration' in services %} checked {% endif %}> Headlight/Taillight Restoration</label>
+            <label><input type="checkbox" name="service" value="Windshield Replacement"
+                          {% if 'Windshield Replacement' in services %} checked {% endif %}> Windshield Replacement</label>
+            <label><input type="checkbox" name="service" value="Oil Change"
+                          {% if 'Oil Change' in services %} checked {% endif %}> Oil Change</label>
+            <label><input type="checkbox" name="service" value="Alignment Service"
+                          {% if 'Wheel Alignment' in services %} checked {% endif %}> Wheel Alignment</label>
+            <label><input type="checkbox" name="service" value="Power Steering Repair"
+                          {% if 'Power Steering Repair' in services %} checked {% endif %}> Power Steering Repair</label>
+        </div>
+                <button class="save-btn" type="submit">Save Services</button>
+            </form>
+    <h2>Your Appointments</h2>
+<div class="appointment-section">
+    <ul class="appointment-list">
+        {% for appointment in appointments %}
+        <li class="appointment-item">
+            <h4>{{ appointment.service }}</h4>
+            <p>Date: {{ appointment.date }}</p>
+            <p>Time: {{ appointment.time }}</p>
+            <p>Customer Name: {{ appointment.customerName }}</p>
+            <p>Contact: {{ appointment.contact }}</p>
+            <p>Vehicle: {{ appointment.vehicle }}</p>
+            <p>Status: {{ appointment.status }}</p>
+            <p><button class="complete-btn" appointmentID = "{{ appointment._id }}"
+                {% if appointment.status == "Completed" %}
+                    style="display:none;"
+                {% endif %}>Complete</button></p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/search.css') }}">
+    <script src="{{ url_for('static', filename='scripts/search.js') }}" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="customer-section">
+            <h2>Search Results</h2>
+        <div class="search-section">
+            <ul class="search-list">
+                {% for result in results %}
+                <li class="appointment-item">
+                    <h4 style="font-size: 120%;">{{ result.firstName }} {{ result.lastName }}</h4>
+                    <p>Address:</p> {{ result.address.street }}, {{ result.address.city }}
+                    <p>Contact:</p> {{ result.phone }}
+                    <p>Services:</p>
+                    {% for service in result.services %}
+                        {{ service }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                    <p><button class="makeApp-btn" mechanicID = "{{ result._id }}">Schedule Appointment</button></p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
